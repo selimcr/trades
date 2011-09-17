@@ -1,0 +1,32 @@
+<% content_for :additional_javascripts do %>
+<script language=JavaScript > 
+var calendar = null; 
+var oldLink = null;
+ 
+function selected(cal, date) {
+  cal.sel.value = date; 
+ 
+  if (cal.sel.id == "date")
+    cal.callCloseHandler();
+}
+ 
+ 
+function irA(seller){ 
+	if (seller.options[seller.selectedIndex].value==""){
+          document.getElementById("comission").disabled=true;		
+          document.getElementById("comission").value="";		 
+	}else{
+          document.getElementById("comission").disabled=false;
+	}	 
+}
+</script> 
+
+<% end %>
+
+
+<h2>Editing Customer</h2> 
+
+<%= form_for @customer, :url => admin_customer_url do |f| %> 
+  <%= render :partial => "form",  :object => f, :locals => { :customer => @customer } %> 
+  
+  <%= f.submit "Update" %> <% end %> <br />

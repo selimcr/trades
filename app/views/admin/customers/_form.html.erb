@@ -1,0 +1,18 @@
+
+<table>
+  <tr><td colspan="2"><%= render "shared/error_messages", :target => @customer %> </td></tr>  
+  <tr><td><%= form.label :code %></td><td><%= form.text_field :code %></td></tr>  
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :date %></td><td><%= form.text_field :date %></td></tr>  
+  <tr><td><%= form.label :initial_capital %></td><td><%= form.text_field :initial_capital %></td></tr>
+  <tr><td><%= form.label "Actual Capital" %></td><td><%= form.text_field :actual_capital %></td></tr>
+  <tr><td><%= form.label :level %></td><td><%= form.text_field :level %></td></tr>
+  <tr><td><%= form.label "Type" %></td><td><%= form.text_field :ctype %></td></tr>
+  <tr><td><%= form.label "Participation" %></td><td><%= form.text_field :percentage %></td></tr>
+  <tr><td><%= form.label "Seller" %></td><td>
+      <%= collection_select(:seller, :id, @sellers, :id, :name, options ={:prompt => "No", :selected => "" + getseller(@customer)}, html_options = {:onchange => "return irA(this)"}) %> 
+  </td></tr>
+  <tr><td><%= form.label "Comission Seller %" %></td>    
+  <td><label><input name="comission" type="text" id="comission" <%= 'disabled="false"' if @csassociation.nil?%>  onblur="return verificarClient()" value="<%= @csassociation.percentage unless @csassociation.nil?%>"/></label></td>
+  </tr>
+</table>  

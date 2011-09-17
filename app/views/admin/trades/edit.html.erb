@@ -1,0 +1,12 @@
+<h2>Editing Seller</h2>
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+      
+<% form_for @seller, :url => admin_seller_url do |f| %> 
+  <%= render :partial => "form",  :object => f, :locals => { :user => @seller } %> 
+  
+  <%= f.submit "Update" %> <% end %> <br />

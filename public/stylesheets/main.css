@@ -1,0 +1,115 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {  margin:0;
+	 padding:0;
+	 font-family:Verdana, Geneva, sans-serif;
+}
+
+#main { width:1024px;
+		margin:auto;
+		min-height:768px;
+}
+
+#header { height:100px;
+			margin:0 0 15px 0;
+}
+
+#header div { display:inline-block;
+}
+
+#header #phone { margin:0 0 0 590px;
+					color:#999999;
+					font-size:12px;
+}
+
+/*---------------------------Menu Principal------------------------*/
+#main-menu {    width:1024px;
+				background:url(../images/main-menu-bg.png) no-repeat;
+				height:50px;
+				padding:5px 0 0 20px;
+				/*margin:0 0 15px 0;*/
+				
+}
+#main-menu  li { display:inline-block;
+				 height:30px;
+				 padding:10px 30px 0 28px;
+				 border-right: 1px  #CCCCCC  dotted;
+}
+
+#main-menu li a {  font-size:12px;
+				   color:#333;
+				   text-decoration:none;
+				   font-weight:bold;
+				   text-transform:uppercase;
+}
+
+#main-menu li a:hover { color:#666666;
+}
+
+
+/*-------------  Menu izquierda ----------------------------*/
+#left-menu { 
+			background:url(../images/left-menu.png) no-repeat;
+			width:180px;
+			height:291px;
+			padding:25px 0 0 35px;
+			position:relative;
+			float:left;
+			margin:15px 0 0 0;
+}
+
+/* definiendo los estilos de la lista [Botones] */
+#left-menu  li {    width:150px;
+					height:25px;
+					border-bottom:dotted 1px #CCCCCC;
+					list-style-image:url(../images/bullet.png);
+					margin:0 0 8px 0;	
+}
+
+#left-menu  li a { size:12px;
+				   color:#333;
+				   text-decoration:none;
+}
+
+#left-menu  li a:hover { color:#999;
+}
+
+#content {display:inline-block;
+			position:relative;
+}
+
+/* ----------- Inicia el Contenido -----------*/
+#main-content { 
+				float:left;
+}
+
+#banner { border: #CCC 1px solid;
+			/*display:inline-block;*/
+			margin:15px 0 0 0;
+			padding:2px;
+			position:relative;
+}
+
+#content-2 { 
+			padding:5px;
+			border: #CCC 1px solid;
+			width:729px;
+			margin:10px 0 10px 0;
+			display:inline-block;
+}
+
+#content-2 h1 {font-size:24px;
+				color:#fea100;
+}
+
+#content-2 p {font-size:12px; padding:5px;}
+
+#footer {   background:#e0e0e0;
+			height:30px;
+			width:100%;	
+			text-align:center;
+			color:#333;	
+			padding:10px 0 0 0;	
+			border-top:#666 1px solid;
+}

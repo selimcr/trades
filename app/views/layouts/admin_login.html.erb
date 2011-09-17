@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= yield(:title).blank? ? seo_meta_title : yield(:title) %></title>
+<%= stylesheet_link_tag 'default.css'%>
+<%= yield :additional_styles %>
+<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
+<%= yield :additional_javascripts %>
+</head>
+<body>
+<div id="header" style="float:inherit"><div style="float:left"> <img src="http://www.tecnotekcr.net/logoTecnotek.png" alt="" width="261" height="74" /></div> 
+</div> 
+ 
+<div id="menu"> 
+	<ul> 
+		<li>
+                  <%= link_to 'Home', "/admin" %>
+                </li> 
+		<li><a href="#">Master</a></li> 
+		<li><a href="#">Trades</a></li> 
+		<li><a href="#">Conciliacion</a></li> 
+		<li><a href="#">Reports</a></li> 
+		<li>
+                  <%= link_to 'Customers', admin_customers_url%>                  
+                </li> 
+		<li><a href="#">About Us</a></li> 
+	</ul> 
+</div>   
+   
+<div id="content">
+        <div id="columnA"> 
+		<%= yield %>
+	</div> 
+	<div id="columnB">
+		<h3><%= current_user.name  %> 	</h3>
+                <%= link_to 'Log out', "/admin/logout" if current_user %>
+		<%= link_to 'Edit Profile', edit_admin_user_path(current_user) if current_user %>               
+                
+		<p><br/>
+
+                      <h3>User Options
+                      </h3>
+                      <div id="menuC">
+                              <ul>                                      
+                                      <%= link_to 'Add User', new_admin_user_path %>
+                                      <%= link_to 'Users', admin_users_path if current_user %>                                      
+                              </ul>
+                      </div>
+                </p>
+	</div>
+
+   
+</div>
+  
+  
+<div id="footer">
+	<p>Copyright &copy; 211 <%= seo_meta_title %> . Designed by <a href="http://www.freecsstemplates.org" class="link1">Free CSS Templates</a></p>
+</div>
+
+</body>
+</html>

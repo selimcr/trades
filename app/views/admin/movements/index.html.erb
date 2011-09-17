@@ -1,0 +1,43 @@
+<h2>Customer Income Deposits</h2>
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+       
+<%= form_tag :controller => "movements", :action => "search" do %>     
+  <div><label>Customer:</label>
+        <%= collection_select(:customer, :id, @customers, :id, :name, options ={:prompt => "Select a Customer"}, html_options = {:onchange => "submit();"}) %> 
+  </div>
+<% end %>
+
+<% unless @customer.nil? %>
+  <table border="0" align="center" width="650">
+  <tr bgcolor="#979595" align="center" height=" 22px" style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color: white;">
+    <th>Code</th>
+    <th>Name</th>    
+    <th>Amount</th>   
+    <th>Description</th>       
+    <th>Type</th>   
+    <th>Date</th>   
+    <th colspan="2"></th>
+  </tr>
+  <% @customer.movements.each do |movement| %>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td><%=  @customer.code %></td>
+    <td><%=  @customer.name %></td>
+    <td><%= movement.amount %></td>
+    <td><%= movement.description %></td>
+    <td><%= movement.mtype %></td>
+    <td><%= movement.created_at %></td>   
+    <td><%= link_to image_tag("editar.gif", :border=>0, :alt => "Editar"), :action => 'edit', :id => movement %></td>    
+    <td> 
+      <%= link_to image_tag("borrar.gif", :border=>0, :alt => "Borrar"), :method => 'delete', :id => movement, :remote => true %> 
+    </td>        
+      </tr>
+    <% end %>
+    </table>
+<% end %>
+        <br/>
+  

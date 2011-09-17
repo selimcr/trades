@@ -1,0 +1,6 @@
+<h2>User</h2> 
+
+<% form_for @user, :url => admin_user_url do |f| %> 
+  <%= render :partial => "form",  :object => f, :locals => { :user => @user } %> 
+  
+  <%= f.submit "Update" %> <% end %> <br />

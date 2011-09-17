@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= yield(:title).blank? ? seo_meta_title : yield(:title) %></title>
+<%= stylesheet_link_tag 'main.css'%>
+<%= yield :additional_styles %>
+<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
+<%= yield :additional_javascripts %>
+</head>
+
+<body>
+<div id="main">
+	<div id="header">
+    	<div id="logo"><img src="images/logo.png" width="223" height="89" alt="logo-xample" /></div>
+        <div id="phone">
+        	<p>Tel:(506)2222-2222<br />Fax:(506)2222-2223</p>
+        </div>
+  </div>
+    <div id="main-menu">
+            <ul>
+            	<li><a href="#">Boton 1</a></li>
+            	<li><a href="#">Boton 2</a></li>
+            	<li><a href="#">Boton 3</a></li>
+            	<li><a href="#">Boton 4</a></li>
+            	<li><a href="#">Boton 5</a></li>
+            	<li><a href="#">Boton 6</a></li>
+            	<li><%= link_to 'Exclusive', admin_url %></li>                                                                               
+            </ul>
+    </div>
+    <div id="content">
+   		<div id="left-menu">
+        	<ul>
+            	<li><a href="#">Item 1</a></li>
+            	<li><a href="#">Item 2</a></li>
+            	<li><a href="#">Item 3</a></li>
+            	<li><a href="#">Item 4</a></li>
+            	<li><a href="#">Item 5</a></li>
+            	<li><a href="#">Item 6</a></li>
+            	<li><%= link_to 'Exclusive', admin_url %></li>                                                                               
+            </ul>
+        </div>
+        <div id="main-content">
+        	<%= yield %>  
+      </div>
+    </div>
+</div>
+<div id="footer">
+	<p>Derechos Reservados | 20011</p>
+</div>
+</body>
+</html>
+

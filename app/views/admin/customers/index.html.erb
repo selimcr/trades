@@ -1,0 +1,43 @@
+<h2>Listing Customers</h2>
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+       
+<table border="0" align="center" width="650">
+  <tr bgcolor="#979595" align="center" height=" 22px" style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color: white;">
+    <th>Code</th>
+    <th>Name</th>    
+    <th>Date</th>   
+    <th>Month</th>   
+    <th>Invested</th>   
+    <th>Accumulate</th>   
+    <th>Level</th>   
+    <th>Type</th>   
+    <th>%</th>   
+    <th>Seller</th>   
+    <th colspan="2"></th>
+  </tr>
+
+<% @customers.each do |customer| %>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td><%= customer.code %></td>
+    <td><%= customer.name %></td>
+    <td><%= customer.date %></td>
+    <td><%= customer.initial_month_capital %></td>    
+    <td><%= customer.initial_capital %></td>
+    <td><%= customer.actual_capital %></td>
+    <td><%= customer.level %></td>
+    <td><%= customer.ctype %></td>
+    <td><%= customer.percentage %></td>
+    <td><%= customer.agent %></td>    
+   
+    <td><%= link_to image_tag("editar.gif", :border=>0, :alt => "Editar"), :action => 'edit', :id => customer %></td>    
+    <td> 
+      <%= link_to image_tag("borrar.gif", :border=>0, :alt => "Borrar"), :method => 'delete', :id => customer, :remote => true %> 
+</td>        
+  </tr>
+<% end %>
+</table>

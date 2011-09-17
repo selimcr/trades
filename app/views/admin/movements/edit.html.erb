@@ -1,0 +1,6 @@
+<h2>Editing Movement</h2> 
+
+<%= form_for @movement, :url => admin_movement_url do |f| %> 
+  <%= render :partial => "form",  :object => f, :locals => { :movement => @movement } %> 
+  
+  <%= f.submit "Update" %> <% end %> <br />

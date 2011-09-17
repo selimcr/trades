@@ -1,0 +1,51 @@
+<% content_for :additional_javascripts do %>
+<script language=JavaScript > 
+var calendar = null; 
+var oldLink = null;
+ 
+function selected(cal, date) {
+  cal.sel.value = date; 
+ 
+  if (cal.sel.id == "date")
+    cal.callCloseHandler();
+}
+ 
+ 
+function irA(seller){ 
+	if (seller.options[seller.selectedIndex].value==""){
+          document.getElementById("comission").disabled=true;		
+          document.getElementById("comission").value="";		 
+	}else{
+          document.getElementById("comission").disabled=false;
+	}	 
+}
+</script> 
+
+<% end %>
+<h2>Creating Customer</h2>
+<%= flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+
+<%= form_for @customer, :url => admin_customers_url do |form| %>  
+  <table>
+  <tr><td colspan="2"><%= render "shared/error_messages", :target => @customer %> </td></tr>
+  <tr><td><%= form.label :code %></td><td><%= form.text_field :code %></td></tr>  
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :date %></td><td><%= form.text_field :date %></td></tr>
+  
+  <tr><td><%= form.label "Capital" %></td><td><%= form.text_field :initial_capital %></td></tr>
+  <tr><td><%= form.label :level %></td><td><%= form.text_field :level %></td></tr>
+  <tr><td><%= form.label "Type" %></td><td><%= form.text_field :ctype %></td></tr>
+  <tr><td><%= form.label "Participation" %></td><td><%= form.text_field :percentage %></td></tr>
+  <tr><td><%= form.label "Seller" %></td><td>
+      <%= collection_select(:seller, :id, @sellers, :id, :name, options ={:prompt => "No", :selected => "" + getseller(@customer)}, html_options = {:onchange => "return irA(this)"}) %> 
+  </td></tr>
+  <tr><td><%= form.label "Comission Seller %" %></td>    
+  <td><label><input name="comission" type="text" id="comission" <%= 'disabled="false"' if @csassociation.nil?%>  onblur="return verificarClient()" value="<%= @csassociation.percentage unless @csassociation.nil?%>"/></label></td>
+</table> 
+  <%= form.submit "Create" %> 
+<% end %>

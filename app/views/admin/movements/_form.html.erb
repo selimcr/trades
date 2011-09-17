@@ -1,0 +1,11 @@
+
+<table>
+  <tr><td colspan="2"><%= render "shared/error_messages", :target => @movement %> </td></tr>  
+  <tr><td><label>Customer</label></td><td><%= @movement.customer.name.to_s %></td></tr>  
+  <tr><td><%= form.label "Date" %></td><td> <%= form.text_field :created_at %> </td></tr>
+  <tr><td><%= form.label "Type" %></td><td><%= select( "movement", "mtype", {"Deposit" => "1", "Withdrawal" => "2"}, {:selected => @movement.mtype}) %></td></tr>    
+  <tr><td><%= form.label :amount %></td><td><%= form.text_field :amount %></td></tr>
+  <tr><td><%= form.label :description %></td><td><%= form.text_field :description %></td></tr>
+  
+  </tr>
+</table>  

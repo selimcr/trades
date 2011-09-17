@@ -1,0 +1,30 @@
+<h2>Trades File</h2>
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+      
+<%= form_for @trade, :url => admin_trades_url do |form| %>  
+  <table>
+  <tr><td colspan="2"><%= render "shared/error_messages", :target => @seller %> </td></tr>  
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr><tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+  
+  
+</table> 
+  <%= form.submit "Add" %> 
+<% end %>
+
+        <br />

@@ -1,0 +1,34 @@
+<h2>Listing Sellers</h2>
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+      
+<%= form_for @seller, :url => admin_sellers_url do |form| %>  
+  <table>
+  <tr><td colspan="2"><%= render "shared/error_messages", :target => @seller %> </td></tr>  
+  <tr><td><%= form.label :name %></td><td> <%= form.text_field :name %> </td></tr>
+</table> 
+  <%= form.submit "Add" %> 
+<% end %>
+        <br />
+<table border="0" align="center" width="650">
+  <tr bgcolor="#979595" align="center" height=" 22px" style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color: white;">
+    <th>Name</th>
+    <th>Amount</th>    
+    <th colspan="2"></th>
+  </tr>
+
+<% @sellers.each do |seller| %>
+  <tr class="<%= cycle("even", "odd") %>">    
+    <td><%= seller.name %></td>    
+    <td><%= seller.account %></td>
+    <td><%= link_to image_tag("editar.gif", :border=>0, :alt => "Editar"), :action => 'edit', :id => seller %></td>    
+    <td><%= link_to image_tag("borrar.gif", :border=>0, :alt => "Borrar"), :method => 'delete', :id => seller %> 
+    </td>        
+  </tr>
+<% end %>
+</table>
+        <br />

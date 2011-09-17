@@ -1,0 +1,27 @@
+<h2>Listing users</h2>
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+<table width="100%" cellpading="1" cellspacing="1" border="0">
+  <tr bgcolor="#979595" align="center" height=" 22px" style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color: white;">
+    <th>Name</th>
+    <th>Role</th>    
+    <th>Email</th>   
+    <th colspan="2"></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td><%= user.name %></td>
+    <td><%= user.role %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to image_tag("editar.gif", :border=>0, :alt => "Editar"), :action => 'edit', :id => user %></td>    
+    <td> 
+      <%= link_to image_tag("borrar.gif", :border=>0, :alt => "Borrar"), :method => 'delete', :id => user, :remote => true %> 
+</td>        
+  </tr>
+<% end %>
+</table>
